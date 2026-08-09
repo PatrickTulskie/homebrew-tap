@@ -59,4 +59,33 @@ both older and newer tags.
 
 ## Formulae
 
-None yet.
+### `dfang`
+
+Defang and refang IOCs — make emails, URLs, and IP addresses unclickable, or give
+them their teeth back.
+
+```sh
+brew install PatrickTulskie/tap/dfang
+```
+
+Ships both binaries from a single release tarball, so `rfang` is an alias for the
+same formula and `brew install PatrickTulskie/tap/rfang` installs the same thing.
+
+```sh
+pbpaste | dfang | pbcopy
+grep -i hxxp iocs.txt | rfang
+```
+
+Uses the prebuilt binaries attached to the [dfang
+releases](https://github.com/PatrickTulskie/dfang/releases) rather than building
+from source, covering macOS and Linux on both arm64 and x86_64.
+
+#### Bumping the version
+
+Edit `version` in `Formula/dfang.rb` and refresh all four hashes from the
+release's `SHA256SUMS`:
+
+```sh
+V=0.3.0
+curl -sL "https://github.com/PatrickTulskie/dfang/releases/download/v$V/SHA256SUMS"
+```
