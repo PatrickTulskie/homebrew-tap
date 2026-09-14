@@ -2,15 +2,14 @@ class Guise < Formula
   desc "Dedicated GitHub identity for coding harnesses"
   homepage "https://github.com/PatrickTulskie/guise"
   url "https://github.com/PatrickTulskie/guise/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "efea688e7de7d6d9642832a86723b168b3cd2e695d118871a9d9f10732bd471f"
+  sha256 "5b61aac5f2f0beb6ac6504644697c7cc5a3614ec6f799f417e2c1dac844ab6dd"
+  license "MIT"
 
   livecheck do
     url :stable
     strategy :github_latest
   end
 
-  # A self-contained bash script; the helpers it installs are embedded in it.
-  # openssl is only needed to sign App JWTs, and the system one can do that.
   depends_on "gh"
   depends_on "jq"
 
@@ -29,7 +28,7 @@ class Guise < Formula
   end
 
   test do
-    assert_match "usage: guise <command>", shell_output("#{bin}/guise --help")
+    assert_equal "guise #{version}", shell_output("#{bin}/guise --version").chomp
 
     assert_match "no config at #{testpath}/absent",
       shell_output("GUISE_CONFIG=#{testpath}/absent #{bin}/guise which 2>&1", 1)
