@@ -1,91 +1,28 @@
 # homebrew-tap
 
-Personal Homebrew tap.
-
-## Install
+Patrick's personal Homebrew tap: things that aren't in homebrew-core, or that
+need to be pinned to a version core won't hold.
 
 ```sh
 brew tap PatrickTulskie/tap
 ```
 
-## Casks
+## What's in here
 
-### `logseq-legacy`
+| Name | What it does | Install |
+| --- | --- | --- |
+| [dfang](https://github.com/PatrickTulskie/dfang) | Defang and refang IOCs — make emails, URLs, and IP addresses unclickable, or give them their teeth back. Installs `rfang` too. | `brew install PatrickTulskie/tap/dfang` |
+| [logseq-legacy](https://github.com/logseq/logseq) | Logseq 0.10.15, the last file-based (markdown) release, pinned so nothing upgrades you onto the 2.x SQLite rewrite. | `brew install --cask PatrickTulskie/tap/logseq-legacy` |
 
-Logseq **0.10.15** — the last release of the file-based (markdown) line, pinned.
+## Before you install logseq-legacy
 
-Logseq 2.x is a full rewrite that stores graphs in SQLite and cannot open the
-markdown graphs synced through iCloud. The `logseq` cask in homebrew-cask tracks
-2.x, and Logseq's own in-app updater will happily move you from 0.10.x onto it.
-This cask holds a fixed version so `brew upgrade` can never do that.
-
-```sh
-brew install --cask PatrickTulskie/tap/logseq-legacy
-```
-
-Installs as `/Applications/Logseq.app`, so it conflicts with the upstream
-`logseq` cask. Uninstall that first if present:
+It installs `/Applications/Logseq.app` — the same place the `logseq` cask in
+homebrew-cask puts 2.x — so remove that one first. It leaves your graphs and
+`~/.logseq` alone:
 
 ```sh
-brew uninstall --cask logseq        # does not touch ~/.logseq or your graphs
+brew uninstall --cask logseq
 ```
 
-**One manual step after installing:** disable automatic updates in Logseq's
-Settings. The app will otherwise offer 2.x and migrate you off the file-based
-version. This setting is stored in the app's localStorage rather than a config
-file, so it cannot be provisioned from Ansible.
-
-Related: `logseq-og` in homebrew-cask is the same file-based lineage continued
-by upstream as a separate app (`Logseq-OG.app`, version reset to 1.0.0). It is
-maintained and installs cleanly, but its UI has drifted from 0.10.x enough that
-older community themes do not render correctly against it.
-
-#### Changing the pinned version
-
-Edit `version` and both `sha256` values in `Casks/logseq-legacy.rb`. To get the
-hashes for another release:
-
-```sh
-V=0.10.9
-for A in arm64 x64; do
-  URL="https://github.com/logseq/logseq/releases/download/$V/logseq-darwin-$A-$V.dmg"
-  echo "$A $(curl -sL "$URL" | shasum -a 256 | cut -d' ' -f1)"
-done
-```
-
-Note that release asset filenames changed case across versions; GitHub serves
-them case-insensitively, so the lowercase `logseq-darwin-…` form above works for
-both older and newer tags.
-
-## Formulae
-
-### `dfang`
-
-Defang and refang IOCs — make emails, URLs, and IP addresses unclickable, or give
-them their teeth back.
-
-```sh
-brew install PatrickTulskie/tap/dfang
-```
-
-Ships both binaries from a single release tarball, so `rfang` is an alias for the
-same formula and `brew install PatrickTulskie/tap/rfang` installs the same thing.
-
-```sh
-pbpaste | dfang | pbcopy
-grep -i hxxp iocs.txt | rfang
-```
-
-Uses the prebuilt binaries attached to the [dfang
-releases](https://github.com/PatrickTulskie/dfang/releases) rather than building
-from source, covering macOS and Linux on both arm64 and x86_64.
-
-#### Bumping the version
-
-Edit `version` in `Formula/dfang.rb` and refresh all four hashes from the
-release's `SHA256SUMS`:
-
-```sh
-V=0.3.0
-curl -sL "https://github.com/PatrickTulskie/dfang/releases/download/v$V/SHA256SUMS"
-```
+Then turn off automatic updates in Logseq's settings after first launch, or the
+app's own updater will offer 2.x and migrate your graphs to it.
