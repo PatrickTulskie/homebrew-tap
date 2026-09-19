@@ -13,6 +13,7 @@ brew tap PatrickTulskie/tap
 | --- | --- | --- |
 | [dfang](https://github.com/PatrickTulskie/dfang) | Defang and refang IOCs — make emails, URLs, and IP addresses unclickable, or give them their teeth back. Installs `rfang` too. | `brew install PatrickTulskie/tap/dfang` |
 | [guise](https://github.com/PatrickTulskie/guise) | Gives your coding agents their own GitHub identity, so their commits land as a bot instead of as you. | `brew install PatrickTulskie/tap/guise` |
+| [op-cache](https://github.com/PatrickTulskie/op-cache) | Caches 1Password CLI secrets in memory for your login session, so agents and scripts stop stalling on vault-lock prompts. | `brew install PatrickTulskie/tap/op-cache` |
 | [logseq-legacy](https://github.com/logseq/logseq) | Logseq 0.10.15, the last file-based (markdown) release, pinned so nothing upgrades you onto the 2.x SQLite rewrite. | `brew install --cask PatrickTulskie/tap/logseq-legacy` |
 
 ## Before you install logseq-legacy
