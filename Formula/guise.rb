@@ -1,8 +1,8 @@
 class Guise < Formula
   desc "Dedicated GitHub identity for coding harnesses"
   homepage "https://github.com/PatrickTulskie/guise"
-  url "https://github.com/PatrickTulskie/guise/archive/refs/tags/v0.5.0.tar.gz"
-  sha256 "10b8c57f26ee2c80a8326ba09830181617ab710593e3fd28c8fd3ae04bbfa96f"
+  url "https://github.com/PatrickTulskie/guise/archive/refs/tags/v0.6.0.tar.gz"
+  sha256 "d4f5cbb2708207ff012c5abf69c422635fd296e6a8bc40816d3574b8504752cf"
   license "MIT"
 
   livecheck do
