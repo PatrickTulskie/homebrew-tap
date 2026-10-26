@@ -1,7 +1,7 @@
 class Guise < Formula
   desc "Dedicated GitHub identity for coding harnesses"
   homepage "https://github.com/PatrickTulskie/guise"
-  version "0.7.0"
+  version "0.7.1"
   license "MIT"
 
   livecheck do
@@ -14,22 +14,22 @@ class Guise < Formula
   on_macos do
     on_arm do
       url "https://github.com/PatrickTulskie/guise/releases/download/v#{version}/guise-#{version}-darwin-arm64.tar.gz"
-      sha256 "47c182f19b90a5a5b939e72699653f7554cb044c1f28ba5c7d6237a75420f6bc"
+      sha256 "2cd3af40cf8e76871eed94456f043992d8eff7cd339ea5a5771accc61358f0d3"
     end
     on_intel do
       url "https://github.com/PatrickTulskie/guise/releases/download/v#{version}/guise-#{version}-darwin-amd64.tar.gz"
-      sha256 "358238a8ee7e5beeb65a0349294550099d0edb043dfba4077c35b28d2231e23a"
+      sha256 "1ca7d7d5aece06427894ca960c31b09e646d8d23b989744996132f54e9f590eb"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/PatrickTulskie/guise/releases/download/v#{version}/guise-#{version}-linux-arm64.tar.gz"
-      sha256 "11c3e2be28825d315823dbc1b4b92d7a046271b947a1c4426d8fc614d31df52a"
+      sha256 "7342ab78cf4f4c8c8672f5efd5ba208a871992a8857d81979ef750e827ac1fc3"
     end
     on_intel do
       url "https://github.com/PatrickTulskie/guise/releases/download/v#{version}/guise-#{version}-linux-amd64.tar.gz"
-      sha256 "eabed35267c716ce22c3747d91d6488693a6a89dc9c35c83b330b800b461c403"
+      sha256 "38ac3d5086ad0d5ae173b4daa74ccb87b59ab417b3426d5058791a4697f96654"
     end
   end
 
